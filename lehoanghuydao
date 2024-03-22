@@ -1,1 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void generate_random_2d_array(int rows, int cols, int min_val, int max_val, int arr[rows][cols]) {
+    int i, j;
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            arr[i][j] = rand() % (max_val - min_val + 1) + min_val;
+        }
+    }
+}
+
+void print_2d_array(int rows, int cols, int arr[rows][cols]) {
+    int i, j;
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int rows, cols, min_val, max_val;
+
+    printf("Nhập số hàng: ");
+    scanf("%d", &rows);
+
+    printf("Nhập số cột: ");
+    scanf("%d", &cols);
+
+    printf("Nhập giá trị tối thiểu: ");
+    scanf("%d", &min_val);
+
+    printf("Nhập giá trị tối đa: ");
+    scanf("%d", &max_val);
+
+    // Khởi tạo seed cho hàm rand()
+    srand(time(NULL));
+
+    // Tạo mảng 2 chiều ngẫu nhiên
+    int arr[rows][cols];
+    generate_random_2d_array(rows, cols, min_val, max_val, arr);
+
+    // In mảng 2 chiều
+    printf("Mảng 2 chiều ngẫu nhiên:\n");
+    print_2d_array(rows, cols, arr);
+
+    return 0;
+}
 
